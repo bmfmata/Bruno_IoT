@@ -61,10 +61,10 @@ def desliga():
 	gpio.digital_write(RELE, GPIO.LOW)
 
 
-#def Botao_cloud():
+def Botao_cloud():
 
-	#resposta = dweet.latest_dweet(name="bm_temp")
-	#cloud = resposta['with'][0]['content']['botao']
+	resposta = dweet.latest_dweet(name="bm_temp")
+	cloud = resposta['with'][0]['content']['botao']
 
 def detectaTilt(gpio):
 	status = gpio.digital_read(TILT)
@@ -87,7 +87,7 @@ def Aut_Liga():
 	liga()
 	alarme = 1
 	dweet.dweet_by_name(name="bm_temp", data={"alarme":alarme, "temp":vtemp, "lumi":vlumi})
-	#print ("botao: %d" %cloud)
+	print ("botao: %d" %cloud)
 	print "Sistema Automatico! \n"		
 	print "Ar Condicionado Ligado"		
 	print ("Temperatura: %2.1f" %vtemp)
@@ -99,7 +99,7 @@ def Aut_Des():
 	desliga()	
 	alarme = 0
 	dweet.dweet_by_name(name="bm_temp", data={"alarme":alarme, "temp":vtemp, "lumi":vlumi})	
-	#print ("botao: %d" %cloud)	
+	print ("botao: %d" %cloud)	
 	print "Sistema Automatico! \n"				
 	print "Ar Condicionado Desligado"		
 	print ("Temperatura: %2.1f" %vtemp)
@@ -116,6 +116,7 @@ def Manual():
 
 while True:
 	with GPIO(pins) as gpio:
+		Botao_cloud()
 		vtemp = readtemp(gpio)
 		vlumi = readLumi(gpio)
 		botao_valor = gpio.digital_read(BOTAO)
@@ -129,7 +130,7 @@ while True:
 		else:
 			Manual()
 			detectaTilt(gpio)
-	time.sleep(10)
+	time.sleep(15)
         
     
 
