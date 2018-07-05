@@ -118,7 +118,7 @@ while True:
 		vtemp = readtemp(gpio)
 		vlumi = readLumi(gpio)
 		resposta = dweet.latest_dweet(name="bm_temp")
-		print = resposta['with'][0]['content']['botao']
+		print resposta['with'][0]['content']['botao']
 		botao_valor = gpio.digital_read(BOTAO)
 		if botao_valor == 0: 
 			if vtemp > 18:
