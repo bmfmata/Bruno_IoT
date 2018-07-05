@@ -92,7 +92,7 @@ def Aut_Liga():
 	print "Ar Condicionado Ligado"		
 	print ("Temperatura: %2.1f" %vtemp)
 	print ("Luminosidade: %2.1f \n" %vlumi)
-	time.sleep(5)
+	
 
 def Aut_Des():
 
@@ -104,14 +104,14 @@ def Aut_Des():
 	print "Ar Condicionado Desligado"		
 	print ("Temperatura: %2.1f" %vtemp)
 	print ("Luminosidade: %2.1f \n" %vlumi)
-	time.sleep(5)
+	
 
 def Manual():
 
 	print "Sistema Manual"
 	print ("Temperatura: %2.1f" %vtemp)
 	print ("Luminosidade: %2.1f \n " %vlumi)
-	time.sleep(5)
+
 
 
 while True:
@@ -129,7 +129,7 @@ while True:
 		else:
 			Manual()
 			detectaTilt(gpio)
-
+	time.sleep(10)
         
     
 
