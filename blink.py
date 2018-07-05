@@ -1,6 +1,8 @@
 #!/usr/bin/python
 import time
 
+#teste blink
+
 from gpio_96boards import GPIO
 
 GPIO_A = GPIO.gpio_id('GPIO_A')
