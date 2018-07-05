@@ -84,7 +84,7 @@ def Aut_Liga():
 
 	liga()
 	alarme = 1
-	dweet.dweet_by_name(name="bm_temp", data={"alarme":alarme, "temp":vtemp, "lumi":vlumi})
+	dweet.dweet_by_name(name="bmfmata", data={"alarme":alarme, "temp":vtemp, "lumi":vlumi})
 	print ("botao: %d" %cloud)
 	print "Sistema Automatico! \n"		
 	print "Ar Condicionado Ligado"		
@@ -96,7 +96,7 @@ def Aut_Des():
 
 	desliga()	
 	alarme = 0
-	dweet.dweet_by_name(name="bm_temp", data={"alarme":alarme, "temp":vtemp, "lumi":vlumi})	
+	dweet.dweet_by_name(name="bmfmata", data={"alarme":alarme, "temp":vtemp, "lumi":vlumi})	
 	print ("botao: %d" %cloud)	
 	print "Sistema Automatico! \n"				
 	print "Ar Condicionado Desligado"		
@@ -114,11 +114,10 @@ def Manual():
 
 while True:
 	with GPIO(pins) as gpio:
-		Botao_cloud()
+		resposta = dweet.latest_dweet(name="bmfmata")
+		print resposta['with'][0]['content']['botao']
 		vtemp = readtemp(gpio)
 		vlumi = readLumi(gpio)
-		resposta = dweet.latest_dweet(name="bm_temp")
-		print resposta['with'][0]['content']['botao']
 		botao_valor = gpio.digital_read(BOTAO)
 		if botao_valor == 0: 
 			if vtemp > 18:
@@ -130,7 +129,7 @@ while True:
 		else:
 			Manual()
 			detectaTilt(gpio)
-	time.sleep(15)
+	time.sleep(10)
         
     
 
