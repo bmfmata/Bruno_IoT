@@ -114,17 +114,19 @@ def Manual():
 
 while True:
 	with GPIO(pins) as gpio:
-		resposta = dweet.latest_dweet(name="bmfmata")
-		print resposta['with'][0]['content']
 		vtemp = readtemp(gpio)
 		vlumi = readLumi(gpio)
 		botao_valor = gpio.digital_read(BOTAO)
 		if botao_valor == 0: 
 			if vtemp > 18:
 				Aut_Liga()
+				resposta = dweet.latest_dweet(name="bmfmata")
+				print resposta['with'][0]['content']
 				detectaTilt(gpio)
 			else:
 				Aut_Des()
+				resposta = dweet.latest_dweet(name="bmfmata")
+				print resposta['with'][0]['content']
 				detectaTilt(gpio)
 		else:
 			Manual()
