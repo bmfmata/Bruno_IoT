@@ -115,7 +115,7 @@ def Manual():
 while True:
 	with GPIO(pins) as gpio:
 		resposta = dweet.latest_dweet(name="bmfmata")
-		print resposta['with'][0]['content']['botao']
+		print resposta['with'][0]['content']
 		vtemp = readtemp(gpio)
 		vlumi = readLumi(gpio)
 		botao_valor = gpio.digital_read(BOTAO)
