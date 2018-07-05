@@ -61,11 +61,9 @@ def desliga():
 	gpio.digital_write(RELE, GPIO.LOW)
 
 
-def Botao_cloud():
+#def Botao_cloud():
 
-	resposta = dweet.latest_dweet(name="bm_temp")
-	cloud = resposta['with'][0]['content']['botao']
-
+	
 def detectaTilt(gpio):
 	status = gpio.digital_read(TILT)
 	tilt_detected = 0
@@ -119,6 +117,8 @@ while True:
 		Botao_cloud()
 		vtemp = readtemp(gpio)
 		vlumi = readLumi(gpio)
+		resposta = dweet.latest_dweet(name="bm_temp")
+		print = resposta['with'][0]['content']['botao']
 		botao_valor = gpio.digital_read(BOTAO)
 		if botao_valor == 0: 
 			if vtemp > 18:
