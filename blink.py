@@ -2,6 +2,7 @@
 import time
 
 #teste blink
+#teste 2
 
 from gpio_96boards import GPIO
 
