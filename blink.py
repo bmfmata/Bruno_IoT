@@ -4,6 +4,7 @@ import time
 #teste blink
 #teste 2
 #teste3
+#teste4
 
 from gpio_96boards import GPIO
 
