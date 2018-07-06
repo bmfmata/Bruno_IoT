@@ -66,7 +66,7 @@ def desliga():
 def Leitura_nuvem():
 
 	resposta = dweet.latest_dweet(name="bmfmata")
-	bam_nuvem = resposta['with'][0]['content']['botao']
+	bam_nuvem = resposta['with'][0]['content']['bam_nuvem']
 	Ld_nuvem = resposta['with'][0]['content']['liga_des']
 	reset_nuvem = resposta['with'][0]['content']['reset']	
 
