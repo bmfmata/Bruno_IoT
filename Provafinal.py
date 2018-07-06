@@ -150,7 +150,7 @@ while True:
 				vlumi = readLumi(gpio)
 				botao_valor = gpio.digital_read(BOTAO)
 				Aut_Liga()
-				time.sleep(5)
+				time.sleep(10)
 				if botao_valor == 1:
 					break
 				#detectaTilt(gpio)
@@ -159,7 +159,7 @@ while True:
 				vlumi = readLumi(gpio)
 				botao_valor = gpio.digital_read(BOTAO)
 				Aut_Des()
-				time.sleep(5)
+				time.sleep(10)
 				if botao_valor == 1:
 					break
 				#detectaTilt(gpio)
