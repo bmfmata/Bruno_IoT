@@ -150,7 +150,7 @@ def Man_Des():
 
 while True:
 	with GPIO(pins) as gpio:
-		#Leitura_nuvem()
+		Leitura_nuvem()
 		vtemp = readtemp(gpio)
 		vlumi = readLumi(gpio)
 		botao_valor = gpio.digital_read(BOTAO)
