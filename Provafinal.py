@@ -68,24 +68,24 @@ def Leitura_nuvem():
 	
 def liga(gpio):
 	
-	global aux_led_liga, aux_rele_liga
-	aux_led_liga = gpio.digital_read(LED)
-	if aux_led_liga == 0: 
-		gpio.digital_write(LED, GPIO.HIGH)
-	aux_rele_liga = gpio.digital_read(RELE)
-	if aux_rele_liga == 0:
-		gpio.digital_write(RELE, GPIO.HIGH)
+	#global aux_led_liga, aux_rele_liga
+	#aux_led_liga = gpio.digital_read(LED)
+	#if aux_led_liga == 0: 
+	gpio.digital_write(LED, GPIO.HIGH)
+	#aux_rele_liga = gpio.digital_read(RELE)
+	#if aux_rele_liga == 0:
+	gpio.digital_write(RELE, GPIO.HIGH)
 
 	
 def desliga(gpio):
 
-	global aux_led_desliga, aux_rele_desliga
-	aux_led_desliga = gpio.digital_read(LED)
-	if aux_led_desliga == 1: 
-		gpio.digital_write(LED, GPIO.LOW)
-	aux_rele_desliga = gpio.digital_read(RELE)
-	if aux_rele_desliga == 1:
-		gpio.digital_write(RELE, GPIO.LOW)
+	#global aux_led_desliga, aux_rele_desliga
+	#aux_led_desliga = gpio.digital_read(LED)
+	#if aux_led_desliga == 1: 
+	gpio.digital_write(LED, GPIO.LOW)
+	#aux_rele_desliga = gpio.digital_read(RELE)
+	#if aux_rele_desliga == 1:
+	gpio.digital_write(RELE, GPIO.LOW)
 
 
 	
