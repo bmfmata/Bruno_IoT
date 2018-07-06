@@ -175,7 +175,7 @@ while True:
 		#if reset_nuvem == 1:	
 			#alarme_bebe == 0
 		
-		
+		#
 		#time.sleep(5)
 		
         
