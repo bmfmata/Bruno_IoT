@@ -25,6 +25,10 @@ alarme_bebe = 0
 bam_nuvem = 0
 ld_nuvem = 0
 reset_nuvem = 0
+aux_led_liga = 0
+aux_rele_liga = 0
+aux_led_desliga = 0
+aux_rele_desliga = 0
 
 def readtemp(gpio):
 
