@@ -142,20 +142,20 @@ while True:
 	with GPIO(pins) as gpio:
 		vtemp = readtemp(gpio)
 		vlumi = readLumi(gpio)
-		Leitura_nuvem()
+		#Leitura_nuvem()
 		botao_valor = gpio.digital_read(BOTAO)
-		if botao_valor == 0 and bam_nuvem == 0: 
+		if botao_valor == 0 :
 			if vtemp > 18:
 				Aut_Liga()
-				time.sleep(10)
+				time.sleep(5)
 				#detectaTilt(gpio)
 			else:
 				Aut_Des()
 				#detectaTilt(gpio)
-				time.sleep(10)
+				time.sleep(5)
 		else:
 			Manual()
-			time.sleep(10)
+			time.sleep(5)
 			#detectaTilt(gpio)
 			#if ld_nuvem == 1:
 			#	Man_liga()
@@ -163,7 +163,9 @@ while True:
 			#	Man_des()
 		#if reset_nuvem == 1:	
 			#alarme_bebe == 0
-
+		
+		
+		time.sleep(1)
 		
         
     
