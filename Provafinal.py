@@ -166,7 +166,7 @@ while True:
 				
 		else:
 			Manual()
-			#time.sleep(5)
+			time.sleep(5)
 			#detectaTilt(gpio)
 			#if ld_nuvem == 1:
 			#	Man_liga()
