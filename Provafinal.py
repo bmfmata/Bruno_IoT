@@ -85,7 +85,7 @@ def Aut_Liga():
 	liga()
 	alarme = 1
 	dweet.dweet_by_name(name="bmfmata", data={"alarme":alarme, "temp":vtemp, "lumi":vlumi, "botao":bcloud})
-	#print ("botao: %d" %cloud)
+	print ("botao: %d" %bcloud)
 	print "Sistema Automatico! \n"		
 	print "Ar Condicionado Ligado"		
 	print ("Temperatura: %2.1f" %vtemp)
@@ -97,7 +97,7 @@ def Aut_Des():
 	desliga()	
 	alarme = 0
 	dweet.dweet_by_name(name="bmfmata", data={"alarme":alarme, "temp":vtemp, "lumi":vlumi, "botao":bcloud})	
-	#print ("botao: %d" %cloud)	
+	print ("botao: %d" %bcloud)	
 	print "Sistema Automatico! \n"				
 	print "Ar Condicionado Desligado"		
 	print ("Temperatura: %2.1f" %vtemp)
