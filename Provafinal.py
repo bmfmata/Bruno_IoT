@@ -147,7 +147,7 @@ while True:
 		if botao_valor == 0 and bam_nuvem == 0: 
 			if vtemp > 18:
 				Aut_Liga()
-				detectaTilt(gpio)
+				#detectaTilt(gpio)
 			else:
 				Aut_Des()
 				detectaTilt(gpio)
