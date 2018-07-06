@@ -146,11 +146,11 @@ while True:
 		botao_valor = gpio.digital_read(BOTAO)
 		if botao_valor == 0:
 			if vtemp > 20:
-			Aut_Liga()
-			time.sleep(5)
-		else:
-			Aut_Des()
-			time.sleep(5)
+				Aut_Liga()
+				time.sleep(5)
+			else:
+				Aut_Des()
+				time.sleep(5)
 		else:
 		#detectaTilt(gpio)
 			Manual()
