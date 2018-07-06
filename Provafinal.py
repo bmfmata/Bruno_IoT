@@ -155,7 +155,7 @@ while True:
 				Man_liga()
 			else:
 				Man_des()
-		if reset_nuvem == 1	
+		if reset_nuvem == 1:	
 			alarme_bebe == 0
 
 		time.sleep(10)
