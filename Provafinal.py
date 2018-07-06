@@ -146,12 +146,18 @@ while True:
 		botao_valor = gpio.digital_read(BOTAO)
 		if botao_valor == 0 :
 			while vtemp > 24:
+				vtemp = readtemp(gpio)
+				vlumi = readLumi(gpio)
+				botao_valor = gpio.digital_read(BOTAO)
 				Aut_Liga()
 				time.sleep(5)
 				if botao_valor == 1:
 					break
 				#detectaTilt(gpio)
 			while vtemp <= 24:
+				vtemp = readtemp(gpio)
+				vlumi = readLumi(gpio)
+				botao_valor = gpio.digital_read(BOTAO)
 				Aut_Des()
 				time.sleep(5)
 				if botao_valor == 1:
