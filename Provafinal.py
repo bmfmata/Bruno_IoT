@@ -53,8 +53,16 @@ def readLumi(gpio):
 
 	return  adcout
 
+
+def Leitura_nuvem():
+	global bam_nuvem, ld_nuvem, reset_nuvem
+	resposta = dweet.latest_dweet(name="bmfmata")
+	bam_nuvem = resposta['with'][0]['content']['bam_nuvem']
+	ld_nuvem = resposta['with'][0]['content']['liga_des']
+	reset_nuvem = resposta['with'][0]['content']['reset']
+
 	
-def liga():
+def liga(gpio):
 	
 	global aux_led_liga, aux_rele_liga
 	aux_led_liga = gpio.digital_read(LED)
@@ -65,7 +73,7 @@ def liga():
 		gpio.digital_write(RELE, GPIO.HIGH)
 
 	
-def desliga():
+def desliga(gpio):
 
 	global aux_led_desliga, aux_rele_desliga
 	aux_led_desliga = gpio.digital_read(LED)
@@ -76,12 +84,7 @@ def desliga():
 		gpio.digital_write(RELE, GPIO.LOW)
 
 
-def Leitura_nuvem():
-	global bam_nuvem, ld_nuvem, reset_nuvem
-	resposta = dweet.latest_dweet(name="bmfmata")
-	bam_nuvem = resposta['with'][0]['content']['bam_nuvem']
-	ld_nuvem = resposta['with'][0]['content']['liga_des']
-	reset_nuvem = resposta['with'][0]['content']['reset']	
+	
 
 #def detectaTilt(gpio):
 #	global alarme_bebe
@@ -103,7 +106,7 @@ def Leitura_nuvem():
 
 def Aut_Liga():
 
-	liga()
+	liga(gpio)
 	alarme = 1
 	dweet.dweet_by_name(name="bmfmata", data={"alarme":alarme, "temp":vtemp, "lumi":vlumi, "bam_nuvem":bam_nuvem, "bebe":alarme_bebe, "reset":reset_nuvem, "liga_des":ld_nuvem,})
 	print "Sistema Automatico! \n"		
@@ -114,7 +117,7 @@ def Aut_Liga():
 
 def Aut_Des():
 
-	desliga()	
+	desliga(gpio)	
 	alarme = 0
 	dweet.dweet_by_name(name="bmfmata", data={"alarme":alarme, "temp":vtemp, "lumi":vlumi, "bam_nuvem":bam_nuvem, "bebe":alarme_bebe, "reset":reset_nuvem, "liga_des":ld_nuvem,})
 	print "Sistema Automatico! \n"				
@@ -131,7 +134,7 @@ def Manual():
 
 def Man_Liga():
 
-	liga()
+	liga(gpio)
 	alarme = 1
 	dweet.dweet_by_name(name="bmfmata", data={"alarme":alarme, "temp":vtemp, "lumi":vlumi, "bam_nuvem":bam_nuvem, "bebe":alarme_bebe, "reset":reset_nuvem, "liga_des":ld_nuvem,})
 	print "Ar Condicionado Ligado"		
@@ -140,7 +143,7 @@ def Man_Liga():
 
 def Man_Des():
 
-	desliga()	
+	desliga(gpio)	
 	alarme = 0
 	dweet.dweet_by_name(name="bmfmata", data={"alarme":alarme, "temp":vtemp, "lumi":vlumi, "bam_nuvem":bam_nuvem, "bebe":alarme_bebe, "reset":reset_nuvem, "liga_des":ld_nuvem,})
 	print "Ar Condicionado Desligado"		
