@@ -143,9 +143,10 @@ while True:
 		#Leitura_nuvem()
 		botao_valor = gpio.digital_read(BOTAO)
 		while botao_valor == 0:
-			vtemp = readtemp(gpio)
-			vlumi = readLumi(gpio)
-			if vtemp > 20:
+			with GPIO(pins) as gpio:
+				vtemp = readtemp(gpio)
+				vlumi = readLumi(gpio)
+				if vtemp > 20:
 				Aut_Liga()
 				time.sleep(5)
 			else:
