@@ -99,7 +99,7 @@ def Leitura_nuvem():
 #				break
 #		sleep_count += 1
 #		time.sleep(0.002)
-
+#
 
 def Aut_Liga():
 
