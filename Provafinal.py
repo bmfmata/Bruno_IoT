@@ -21,6 +21,8 @@ spi.bits_per_word = 8
 
 dweet = Dweet()
 
+alarme_bebe = 0
+
 def readtemp(gpio):
 
 	gpio.digital_write(GPIO_CS, GPIO.HIGH)
@@ -61,10 +63,15 @@ def desliga():
 	gpio.digital_write(RELE, GPIO.LOW)
 
 
-#def Botao_cloud():
+def Leitura_nuvem():
 
-	
+	resposta = dweet.latest_dweet(name="bmfmata")
+	bam_nuvem = resposta['with'][0]['content']['botao']
+	Ld_nuvem = resposta['with'][0]['content']['liga_des']
+	reset_nuvem = resposta['with'][0]['content']['reset']	
+
 def detectaTilt(gpio):
+	global alarme_bebe
 	status = gpio.digital_read(TILT)
 	tilt_detected = 0
 	sleep_count = 0
@@ -74,6 +81,7 @@ def detectaTilt(gpio):
 			status = gpio.digital_read(TILT)
 			if tilt_detected > 5:
 				print("Problem Detected")
+				alarme_bebe = 1
 				tilt_detected = 0
 				break
 		sleep_count += 1
@@ -84,8 +92,7 @@ def Aut_Liga():
 
 	liga()
 	alarme = 1
-	dweet.dweet_by_name(name="bmfmata", data={"alarme":alarme, "temp":vtemp, "lumi":vlumi, "botao":bcloud})
-	print ("botao: %d" %bcloud)
+	dweet.dweet_by_name(name="bmfmata", data={"alarme":alarme, "temp":vtemp, "lumi":vlumi, "botao":bam_nuvem, "bebe":alarme_bebe, "reset":reset_nuvem, "liga_des":ld_nuvem,})
 	print "Sistema Automatico! \n"		
 	print "Ar Condicionado Ligado"		
 	print ("Temperatura: %2.1f" %vtemp)
@@ -96,8 +103,7 @@ def Aut_Des():
 
 	desliga()	
 	alarme = 0
-	dweet.dweet_by_name(name="bmfmata", data={"alarme":alarme, "temp":vtemp, "lumi":vlumi, "botao":bcloud})	
-	print ("botao: %d" %bcloud)	
+	dweet.dweet_by_name(name="bmfmata", data={"alarme":alarme, "temp":vtemp, "lumi":vlumi, "botao":bam_nuvem, "bebe":alarme_bebe, "reset":reset_nuvem, "liga_des":ld_nuvem,})
 	print "Sistema Automatico! \n"				
 	print "Ar Condicionado Desligado"		
 	print ("Temperatura: %2.1f" %vtemp)
@@ -110,16 +116,32 @@ def Manual():
 	print ("Temperatura: %2.1f" %vtemp)
 	print ("Luminosidade: %2.1f \n " %vlumi)
 
+def Man_Liga():
+
+	liga()
+	alarme = 1
+	dweet.dweet_by_name(name="bmfmata", data={"alarme":alarme, "temp":vtemp, "lumi":vlumi, "botao":bam_nuvem, "bebe":alarme_bebe, "reset":reset_nuvem, "liga_des":ld_nuvem,})
+	print "Ar Condicionado Ligado"		
+	print ("Temperatura: %2.1f" %vtemp)
+	print ("Luminosidade: %2.1f \n" %vlumi)
+
+def Man_Des():
+
+	desliga()	
+	alarme = 0
+	dweet.dweet_by_name(name="bmfmata", data={"alarme":alarme, "temp":vtemp, "lumi":vlumi, "botao":bam_nuvem, "bebe":alarme_bebe, "reset":reset_nuvem, "liga_des":ld_nuvem,})
+	print "Ar Condicionado Desligado"		
+	print ("Temperatura: %2.1f" %vtemp)
+	print ("Luminosidade: %2.1f \n" %vlumi)
 
 
 while True:
 	with GPIO(pins) as gpio:
 		vtemp = readtemp(gpio)
 		vlumi = readLumi(gpio)
-		resposta = dweet.latest_dweet(name="bmfmata")
-		bcloud = resposta['with'][0]['content']['botao']
+		Leitura_nuvem()
 		botao_valor = gpio.digital_read(BOTAO)
-		if botao_valor == 0: 
+		if botao_valor == 0 and bam_nuvem == 0: 
 			if vtemp > 18:
 				Aut_Liga()
 				detectaTilt(gpio)
@@ -129,7 +151,14 @@ while True:
 		else:
 			Manual()
 			detectaTilt(gpio)
-	time.sleep(10)
+			if ld_nuvem == 1:
+				Man_liga()
+			else:
+				Man_des()
+		if reset_nuvem == 1	
+			alarme_bebe == 0
+
+		time.sleep(10)
         
     
 
