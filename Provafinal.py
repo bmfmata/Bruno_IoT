@@ -145,7 +145,7 @@ while True:
 		#Leitura_nuvem()
 		botao_valor = gpio.digital_read(BOTAO)
 		if botao_valor == 0 :
-			while vtemp > 24:
+			while vtemp > 18:
 				vtemp = readtemp(gpio)
 				vlumi = readLumi(gpio)
 				botao_valor = gpio.digital_read(BOTAO)
