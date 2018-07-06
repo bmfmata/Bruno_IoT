@@ -150,10 +150,10 @@ def Man_Des():
 
 while True:
 	with GPIO(pins) as gpio:
-		Leitura_nuvem()
 		vtemp = readtemp(gpio)
 		vlumi = readLumi(gpio)
 		botao_valor = gpio.digital_read(BOTAO)
+		#Leitura_nuvem()
 		if botao_valor == 0:
 			if vtemp > 20:
 				Aut_Liga()
