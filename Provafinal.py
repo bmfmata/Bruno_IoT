@@ -22,6 +22,9 @@ spi.bits_per_word = 8
 dweet = Dweet()
 
 alarme_bebe = 0
+bam_nuvem = 0
+ld_nuvem = 0
+reset_nuvem = 0
 
 def readtemp(gpio):
 
@@ -64,10 +67,10 @@ def desliga():
 
 
 def Leitura_nuvem():
-
+	global bam_nuvem, ld_nuvem, reset_nuvem
 	resposta = dweet.latest_dweet(name="bmfmata")
 	bam_nuvem = resposta['with'][0]['content']['bam_nuvem']
-	Ld_nuvem = resposta['with'][0]['content']['liga_des']
+	ld_nuvem = resposta['with'][0]['content']['liga_des']
 	reset_nuvem = resposta['with'][0]['content']['reset']	
 
 def detectaTilt(gpio):
