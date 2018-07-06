@@ -55,8 +55,8 @@ def readLumi(gpio):
 
 	
 def liga():
-
-	aux_led_Liga = gpio.digital_read(LED)
+	global aux_led_liga, aux_rele_liga
+	aux_led_liga = gpio.digital_read(LED)
 	if aux_led_liga == 0: 
 		gpio.digital_write(LED, GPIO.HIGH)
 	aux_rele_liga = gpio.digital_read(RELE)
