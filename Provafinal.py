@@ -112,7 +112,7 @@ def Aut_Liga():
 
 	liga(gpio)
 	alarme = 1
-	dweet.dweet_by_name(name="bmfmata", data={"alarme":alarme, "temp":vtemp, "lumi":vlumi, "bam_nuvem":bam_nuvem, "bebe":alarme_bebe, "reset":reset_nuvem, "liga_des":ld_nuvem,})
+	#dweet.dweet_by_name(name="bmfmata", data={"alarme":alarme, "temp":vtemp, "lumi":vlumi, "bam_nuvem":bam_nuvem, "bebe":alarme_bebe, "reset":reset_nuvem, "liga_des":ld_nuvem,})
 	print "Sistema Automatico! \n"		
 	print "Ar Condicionado Ligado"		
 	print ("Temperatura: %2.1f" %vtemp)
@@ -123,7 +123,7 @@ def Aut_Des():
 
 	desliga(gpio)	
 	alarme = 0
-	dweet.dweet_by_name(name="bmfmata", data={"alarme":alarme, "temp":vtemp, "lumi":vlumi, "bam_nuvem":bam_nuvem, "bebe":alarme_bebe, "reset":reset_nuvem, "liga_des":ld_nuvem,})
+	#dweet.dweet_by_name(name="bmfmata", data={"alarme":alarme, "temp":vtemp, "lumi":vlumi, "bam_nuvem":bam_nuvem, "bebe":alarme_bebe, "reset":reset_nuvem, "liga_des":ld_nuvem,})
 	print "Sistema Automatico! \n"				
 	print "Ar Condicionado Desligado"		
 	print ("Temperatura: %2.1f" %vtemp)
@@ -140,7 +140,7 @@ def Man_Liga():
 
 	liga(gpio)
 	alarme = 1
-	dweet.dweet_by_name(name="bmfmata", data={"alarme":alarme, "temp":vtemp, "lumi":vlumi, "bam_nuvem":bam_nuvem, "bebe":alarme_bebe, "reset":reset_nuvem, "liga_des":ld_nuvem,})
+	#dweet.dweet_by_name(name="bmfmata", data={"alarme":alarme, "temp":vtemp, "lumi":vlumi, "bam_nuvem":bam_nuvem, "bebe":alarme_bebe, "reset":reset_nuvem, "liga_des":ld_nuvem,})
 	print "Ar Condicionado Ligado"		
 	print ("Temperatura: %2.1f" %vtemp)
 	print ("Luminosidade: %2.1f \n" %vlumi)
@@ -149,7 +149,7 @@ def Man_Des():
 
 	desliga(gpio)	
 	alarme = 0
-	dweet.dweet_by_name(name="bmfmata", data={"alarme":alarme, "temp":vtemp, "lumi":vlumi, "bam_nuvem":bam_nuvem, "bebe":alarme_bebe, "reset":reset_nuvem, "liga_des":ld_nuvem,})
+	#dweet.dweet_by_name(name="bmfmata", data={"alarme":alarme, "temp":vtemp, "lumi":vlumi, "bam_nuvem":bam_nuvem, "bebe":alarme_bebe, "reset":reset_nuvem, "liga_des":ld_nuvem,})
 	print "Ar Condicionado Desligado"		
 	print ("Temperatura: %2.1f" %vtemp)
 	print ("Luminosidade: %2.1f \n" %vlumi)
