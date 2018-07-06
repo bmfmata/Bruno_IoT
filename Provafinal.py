@@ -160,18 +160,18 @@ while True:
 		vtemp = readtemp(gpio)
 		vlumi = readLumi(gpio)
 		botao_valor = gpio.digital_read(BOTAO)
-		#Leitura_nuvem()
+		Leitura_nuvem()
 		if botao_valor == 0:
 			if vtemp > 20:
 				Aut_Liga()
-				time.sleep(5)
+				time.sleep(10)
 			else:
 				Aut_Des()
-				time.sleep(5)
+				time.sleep(10)
 		else:
 		#detectaTilt(gpio)
 			Manual()
-			time.sleep(5)
+			time.sleep(10)
 			#detectaTilt(gpio)
 			#if ld_nuvem == 1:
 			#	Man_liga()
