@@ -144,29 +144,22 @@ while True:
 		vlumi = readLumi(gpio)
 		#Leitura_nuvem()
 		botao_valor = gpio.digital_read(BOTAO)
-		if botao_valor == 0 :
-			while vtemp > 18:
-				vtemp = readtemp(gpio)
-				vlumi = readLumi(gpio)
-				botao_valor = gpio.digital_read(BOTAO)
-				Aut_Liga()
-				time.sleep(10)
-				if botao_valor == 1:
-					break
-				#detectaTilt(gpio)
-			while vtemp <= 24:
-				vtemp = readtemp(gpio)
-				vlumi = readLumi(gpio)
-				botao_valor = gpio.digital_read(BOTAO)
-				Aut_Des()
-				time.sleep(10)
-				if botao_valor == 1:
-					break
-				#detectaTilt(gpio)
-				
-		else:
-			Manual()
+		while botao_valor == 0 and vtemp > 20:
+			vtemp = readtemp(gpio)
+			vlumi = readLumi(gpio)
+			botao_valor = gpio.digital_read(BOTAO)
+			Aut_Liga()
 			time.sleep(5)
+			#detectaTilt(gpio)
+		while botao_valor == 0 vtemp <= 20:
+			vtemp = readtemp(gpio)
+			vlumi = readLumi(gpio)
+			botao_valor = gpio.digital_read(BOTAO)
+			Aut_Des()
+			time.sleep(5)
+			#detectaTilt(gpio)
+		Manual()
+		time.sleep(5)
 			#detectaTilt(gpio)
 			#if ld_nuvem == 1:
 			#	Man_liga()
