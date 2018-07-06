@@ -151,7 +151,7 @@ while True:
 			Aut_Liga()
 			time.sleep(5)
 			#detectaTilt(gpio)
-		while botao_valor == 0 vtemp <= 20:
+		while botao_valor == 0 and vtemp <= 20:
 			vtemp = readtemp(gpio)
 			vlumi = readLumi(gpio)
 			botao_valor = gpio.digital_read(BOTAO)
