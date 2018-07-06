@@ -145,14 +145,19 @@ while True:
 		#Leitura_nuvem()
 		botao_valor = gpio.digital_read(BOTAO)
 		if botao_valor == 0 :
-			if vtemp > 18:
+			while vtemp > 24:
 				Aut_Liga()
-				#time.sleep(5)
+				time.sleep(5)
+				if botao_valor == 1:
+					break
 				#detectaTilt(gpio)
-			else:
+			while vtemp <= 24:
 				Aut_Des()
+				time.sleep(5)
+				if botao_valor == 1:
+					break
 				#detectaTilt(gpio)
-				#time.sleep(5)
+				
 		else:
 			Manual()
 			#time.sleep(5)
@@ -165,7 +170,7 @@ while True:
 			#alarme_bebe == 0
 		
 		
-		time.sleep(5)
+		#time.sleep(5)
 		
         
     
