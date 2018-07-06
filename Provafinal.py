@@ -58,12 +58,12 @@ def readLumi(gpio):
 	return  adcout
 
 
-def Leitura_nuvem():
-	global bam_nuvem, ld_nuvem, reset_nuvem
-	resposta = dweet.latest_dweet(name="bmfmata")
-	bam_nuvem = resposta['with'][0]['content']['bam_nuvem']
-	ld_nuvem = resposta['with'][0]['content']['liga_des']
-	reset_nuvem = resposta['with'][0]['content']['reset']
+#def Leitura_nuvem():
+#	global bam_nuvem, ld_nuvem, reset_nuvem
+#	resposta = dweet.latest_dweet(name="bmfmata")
+#	bam_nuvem = resposta['with'][0]['content']['bam_nuvem']
+#	ld_nuvem = resposta['with'][0]['content']['liga_des']
+#	reset_nuvem = resposta['with'][0]['content']['reset']
 
 	
 def liga(gpio):
@@ -157,6 +157,8 @@ def Man_Des():
 
 while True:
 	with GPIO(pins) as gpio:
+		resposta = dweet.latest_dweet(name="bmfmata")
+		bam_nuvem = resposta['with'][0]['content']['bam_nuvem']
 		vtemp = readtemp(gpio)
 		vlumi = readLumi(gpio)
 		botao_valor = gpio.digital_read(BOTAO)
