@@ -66,7 +66,7 @@ def readLumi(gpio):
 #	reset_nuvem = resposta['with'][0]['content']['reset']
 
 	
-def liga(gpio):
+def liga():
 	
 	#global aux_led_liga, aux_rele_liga
 	#aux_led_liga = gpio.digital_read(LED)
@@ -77,7 +77,7 @@ def liga(gpio):
 	gpio.digital_write(RELE, GPIO.HIGH)
 
 	
-def desliga(gpio):
+def desliga():
 
 	#global aux_led_desliga, aux_rele_desliga
 	#aux_led_desliga = gpio.digital_read(LED)
@@ -110,7 +110,7 @@ def desliga(gpio):
 
 def Aut_Liga():
 
-	liga(gpio)
+	liga()
 	alarme = 1
 	dweet.dweet_by_name(name="bmfmata", data={"alarme":alarme, "temp":vtemp, "lumi":vlumi, "bam_nuvem":bam_nuvem, "bebe":alarme_bebe, "reset":reset_nuvem, "liga_des":ld_nuvem,})
 	print "Sistema Automatico! \n"		
@@ -121,7 +121,7 @@ def Aut_Liga():
 
 def Aut_Des():
 
-	desliga(gpio)	
+	desliga()	
 	alarme = 0
 	dweet.dweet_by_name(name="bmfmata", data={"alarme":alarme, "temp":vtemp, "lumi":vlumi, "bam_nuvem":bam_nuvem, "bebe":alarme_bebe, "reset":reset_nuvem, "liga_des":ld_nuvem,})
 	print "Sistema Automatico! \n"				
@@ -138,7 +138,7 @@ def Manual():
 
 def Man_Liga():
 
-	liga(gpio)
+	liga()
 	alarme = 1
 	dweet.dweet_by_name(name="bmfmata", data={"alarme":alarme, "temp":vtemp, "lumi":vlumi, "bam_nuvem":bam_nuvem, "bebe":alarme_bebe, "reset":reset_nuvem, "liga_des":ld_nuvem,})
 	print "Ar Condicionado Ligado"		
@@ -147,7 +147,7 @@ def Man_Liga():
 
 def Man_Des():
 
-	desliga(gpio)	
+	desliga()	
 	alarme = 0
 	dweet.dweet_by_name(name="bmfmata", data={"alarme":alarme, "temp":vtemp, "lumi":vlumi, "bam_nuvem":bam_nuvem, "bebe":alarme_bebe, "reset":reset_nuvem, "liga_des":ld_nuvem,})
 	print "Ar Condicionado Desligado"		
@@ -174,7 +174,7 @@ while True:
 				Aut_Des()
 				time.sleep(10)
 		else:
-		#detectaTilt(gpio)
+			#detectaTilt(gpio)
 			Manual()
 			time.sleep(10)
 			#detectaTilt(gpio)
@@ -182,7 +182,7 @@ while True:
 			#	Man_liga()
 			#else:
 			#	Man_des()
-		#if reset_nuvem == 1:	
+			#if reset_nuvem == 1:	
 			#alarme_bebe == 0
 		
 		#
