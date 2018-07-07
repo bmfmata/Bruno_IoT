@@ -149,11 +149,11 @@ while True:
 		if botao_valor == 0 and bam_nuvem == 0:
 			if vtemp > 10:
 				Aut_Liga()
-				time.sleep(5)
+				time.sleep(10)
 				#detectaTilt(gpio)	
 			else:
 				Aut_Des()
-				time.sleep(5)
+				time.sleep(10)
 				#detectaTilt(gpio)
 		else:
 	 		Manual()
@@ -165,7 +165,7 @@ while True:
 			if reset_nuvem == 1:	
 				alarme_bebe == 0
 			
-			time.sleep(5)
+			time.sleep(10)
 		
 		
 		
