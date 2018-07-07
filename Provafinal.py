@@ -166,7 +166,7 @@ while True:
 
 		if botao_valor == 0:
 			if vtemp > 10:
-				if aux_led_liga and aux_rele_liga == 0:
+				if aux_led_liga or aux_rele_liga == 0:
 					Aut_Liga()
 				time.sleep(10)
 				aux_led_liga = gpio.digital_read(LED)
