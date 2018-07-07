@@ -118,7 +118,7 @@ def Aut_Des():
 
 def Manual():
 
-	print "Sistema Manual"
+	print "Sistema Manual \n"
 	
 
 def Man_Liga():
