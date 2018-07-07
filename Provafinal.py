@@ -160,7 +160,7 @@ while True:
 	 		Manual()
 			#detectaTilt(gpio)
 			if ld_nuvem == 1:
-				Man_liga()
+				Man_Liga()
 			else:
 				Man_Des()
 			if reset_nuvem == 1:	
