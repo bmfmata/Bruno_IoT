@@ -157,53 +157,31 @@ def Man_Des():
 
 while True:
 	with GPIO(pins) as gpio:
-		#Leitura_nuvem()
+		Leitura_nuvem()
 		botao_valor = gpio.digital_read(BOTAO)
 		vtemp = readtemp(gpio)
-		if botao_valor == 1:
-			Manual()
-			time.sleep(5)
+		vlumi = readLumi(gpio)
+		if botao_valor == 0:
+			if vtemp > 10:
+				Aut_Liga()
+				time.sleep(5)
+				#detectaTilt(gpio)	
+			else:
+				Aut_Des()
+				time.sleep(5)
+				#detectaTilt(gpio)
 		else:
-			while vtemp > 10:
-					with GPIO(pins) as gpio:
-					resposta = dweet.latest_dweet(name="bmfmata")
-					bam_nuvem = resposta['with'][0]['content']['bam_nuvem']
-					vtemp = readtemp(gpio)
-					vlumi = readLumi(gpio)
-					botao_valor = gpio.digital_read(BOTAO)		
-					Aut_Liga()
-					if botao_valor == 1:
-						break
-					time.sleep(5)	
-			Aut_Des()
+	 		Manual()
+			#detectaTilt(gpio)
+			if ld_nuvem == 1:
+				Man_liga()
+			else:
+				Man_des()
+			if reset_nuvem == 1:	
+				alarme_bebe == 0
 			time.sleep(5)
-
-				
-
-
-		#if botao_valor == 0:
-		#	if vtemp > 10:
-		#		if aux_led_liga or aux_rele_liga == 0:
-		#			Aut_Liga()
-		#		time.sleep(10)
-		#		
-		#	else:
-		#		Aut_Des()
-		#		time.sleep(10)
-		#else:
-			#detectaTilt(gpio)
-		#	Manual()
-		#	time.sleep(10)
-			#detectaTilt(gpio)
-			#if ld_nuvem == 1:
-			#	Man_liga()
-			#else:
-			#	Man_des()
-			#if reset_nuvem == 1:	
-			#alarme_bebe == 0
 		
-		#
-		#time.sleep(5)
+		
 		
         
     
