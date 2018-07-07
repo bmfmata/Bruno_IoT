@@ -162,7 +162,7 @@ while True:
 		vtemp = readtemp(gpio)
 		if botao_valor == 1:
 			Manual()
-			time.sleep(10)
+			time.sleep(5)
 		else:
 			while vtemp > 10:
 				resposta = dweet.latest_dweet(name="bmfmata")
@@ -173,9 +173,9 @@ while True:
 				Aut_Liga()
 				if botao_valor == 1:
 					break
-				time.sleep(10)	
+				time.sleep(5)	
 			Aut_Des()
-			time.sleep(10)
+			time.sleep(5)
 
 				
 
