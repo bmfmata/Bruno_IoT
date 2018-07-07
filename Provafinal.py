@@ -165,7 +165,7 @@ while True:
 			time.sleep(5)
 		else:
 			while vtemp > 10:
-				with GPIO(pins) as gpio:
+					with GPIO(pins) as gpio:
 					resposta = dweet.latest_dweet(name="bmfmata")
 					bam_nuvem = resposta['with'][0]['content']['bam_nuvem']
 					vtemp = readtemp(gpio)
