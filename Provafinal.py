@@ -175,8 +175,8 @@ while True:
 					if botao_valor == 1:
 						break
 					time.sleep(5)	
-				Aut_Des()
-				time.sleep(5)
+			Aut_Des()
+			time.sleep(5)
 
 				
 
