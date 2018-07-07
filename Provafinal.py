@@ -25,10 +25,7 @@ alarme_bebe = 0
 bam_nuvem = 0
 ld_nuvem = 0
 reset_nuvem = 0
-aux_led_liga = 0
-aux_rele_liga = 0
-aux_led_desliga = 0
-aux_rele_desliga = 0
+
 
 def readtemp(gpio):
 
@@ -58,37 +55,26 @@ def readLumi(gpio):
 	return  adcout
 
 
-#def Leitura_nuvem():
-#	global bam_nuvem, ld_nuvem, reset_nuvem
-#	resposta = dweet.latest_dweet(name="bmfmata")
-#	bam_nuvem = resposta['with'][0]['content']['bam_nuvem']
-#	ld_nuvem = resposta['with'][0]['content']['liga_des']
-#	reset_nuvem = resposta['with'][0]['content']['reset']
+def Leitura_nuvem():
+	global bam_nuvem, ld_nuvem, reset_nuvem
+	resposta = dweet.latest_dweet(name="bmfmata")
+	bam_nuvem = resposta['with'][0]['content']['bam_nuvem']
+	ld_nuvem = resposta['with'][0]['content']['liga_des']
+	reset_nuvem = resposta['with'][0]['content']['reset']
 
 	
 def liga():
 	
-	#global aux_led_liga, aux_rele_liga
-	#aux_led_liga = gpio.digital_read(LED)
-	#if aux_led_liga == 0: 
 	gpio.digital_write(LED, GPIO.HIGH)
-	#aux_rele_liga = gpio.digital_read(RELE)
-	#if aux_rele_liga == 0:
 	gpio.digital_write(RELE, GPIO.HIGH)
 
 	
 def desliga():
 
-	#global aux_led_desliga, aux_rele_desliga
-	#aux_led_desliga = gpio.digital_read(LED)
-	#if aux_led_desliga == 1: 
+
 	gpio.digital_write(LED, GPIO.LOW)
-	#aux_rele_desliga = gpio.digital_read(RELE)
-	#if aux_rele_desliga == 1:
 	gpio.digital_write(RELE, GPIO.LOW)
 
-
-	
 
 #def detectaTilt(gpio):
 #	global alarme_bebe
@@ -179,6 +165,7 @@ while True:
 				Man_des()
 			if reset_nuvem == 1:	
 				alarme_bebe == 0
+			
 			time.sleep(5)
 		
 		
