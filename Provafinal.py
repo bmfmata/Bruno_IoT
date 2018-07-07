@@ -116,9 +116,9 @@ def Aut_Des():
 	print ("Luminosidade: %2.1f \n" %vlumi)
 	
 
-def Manual():
 
-	print "Sistema Manual \n"
+
+	
 	
 
 def Man_Liga():
@@ -149,23 +149,24 @@ while True:
 		if botao_valor == 0 and bam_nuvem == 0:
 			if vtemp > 10:
 				Aut_Liga()
-				time.sleep(10)
+				
 				detectaTilt(gpio)	
 			else:
 				Aut_Des()
-				time.sleep(10)
+				
 				detectaTilt(gpio)
 		else:
-	 		Manual()
-			detectaTilt(gpio)
+	 		print "Sistema Manual \n"
 			if ld_nuvem == 1:
 				Man_Liga()
 			else:
 				Man_Des()
-			if reset_nuvem == 1:	
-				alarme_bebe == 0
+			detectaTilt(gpio)
 			
-			time.sleep(10)
+		if reset_nuvem == 1:	
+			alarme_bebe == 0
+			
+		time.sleep(10)
 		
 		
 		
