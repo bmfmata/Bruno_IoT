@@ -74,7 +74,7 @@ def liga():
 	gpio.digital_write(LED, GPIO.HIGH)
 	#aux_rele_liga = gpio.digital_read(RELE)
 	#if aux_rele_liga == 0:
-	gpio.digital_write(RELE, GPIO.HIGH)
+	#gpio.digital_write(RELE, GPIO.HIGH)
 
 	
 def desliga():
