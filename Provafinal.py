@@ -119,8 +119,7 @@ def Aut_Des():
 def Manual():
 
 	print "Sistema Manual"
-	print ("Temperatura: %2.1f" %vtemp)
-	print ("Luminosidade: %2.1f \n " %vlumi)
+	
 
 def Man_Liga():
 
@@ -160,7 +159,7 @@ while True:
 	 		Manual()
 			#detectaTilt(gpio)
 			if ld_nuvem == 1:
-				liga()
+				Man_Liga()
 			else:
 				Man_Des()
 			if reset_nuvem == 1:	
