@@ -76,23 +76,23 @@ def desliga():
 	gpio.digital_write(RELE, GPIO.LOW)
 
 
-#def detectaTilt(gpio):
-#	global alarme_bebe
-#	status = gpio.digital_read(TILT)
-#	tilt_detected = 0
-#	sleep_count = 0
-#	while sleep_count < 1000:
-#		if gpio.digital_read(TILT) != status:
-#			tilt_detected += 1
-#			status = gpio.digital_read(TILT)
-#			if tilt_detected > 5:
-#				print("Problem Detected")
-#				alarme_bebe = 1
-#				tilt_detected = 0
-#				break
-#		sleep_count += 1
-#		time.sleep(0.002)
-#
+def detectaTilt(gpio):
+	global alarme_bebe
+	status = gpio.digital_read(TILT)
+	tilt_detected = 0
+	sleep_count = 0
+	while sleep_count < 1000:
+		if gpio.digital_read(TILT) != status:
+			tilt_detected += 1
+			status = gpio.digital_read(TILT)
+			if tilt_detected > 5:
+				print("Problem Detected")
+				alarme_bebe = 1
+				tilt_detected = 0
+				break
+		sleep_count += 1
+		time.sleep(0.002)
+
 
 def Aut_Liga():
 
@@ -150,14 +150,14 @@ while True:
 			if vtemp > 10:
 				Aut_Liga()
 				time.sleep(10)
-				#detectaTilt(gpio)	
+				detectaTilt(gpio)	
 			else:
 				Aut_Des()
 				time.sleep(10)
-				#detectaTilt(gpio)
+				detectaTilt(gpio)
 		else:
 	 		Manual()
-			#detectaTilt(gpio)
+			detectaTilt(gpio)
 			if ld_nuvem == 1:
 				Man_Liga()
 			else:
