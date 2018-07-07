@@ -165,10 +165,10 @@ while True:
 		#Leitura_nuvem()
 		if botao_valor == 0:
 			if vtemp > 10:
-				aux_led_liga = gpio.digital_read(LED)
-				aux_rele_liga = gpio.digital_read(RELE)
-				if aux_led_liga and aux_rele_liga:
-					Aut_Liga()
+				#aux_led_liga = gpio.digital_read(LED)
+				#aux_rele_liga = gpio.digital_read(RELE)
+				#if aux_led_liga and aux_rele_liga:
+				Aut_Liga()
 				time.sleep(10)
 			else:
 				Aut_Des()
