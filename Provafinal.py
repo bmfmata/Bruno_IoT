@@ -74,7 +74,7 @@ def liga():
 	gpio.digital_write(LED, GPIO.HIGH)
 	#aux_rele_liga = gpio.digital_read(RELE)
 	#if aux_rele_liga == 0:
-	#gpio.digital_write(RELE, GPIO.HIGH)
+	gpio.digital_write(RELE, GPIO.HIGH)
 
 	
 def desliga():
@@ -165,17 +165,18 @@ while True:
 			time.sleep(5)
 		else:
 			while vtemp > 10:
-				resposta = dweet.latest_dweet(name="bmfmata")
-				bam_nuvem = resposta['with'][0]['content']['bam_nuvem']
-				vtemp = readtemp(gpio)
-				vlumi = readLumi(gpio)
-				botao_valor = gpio.digital_read(BOTAO)		
-				Aut_Liga()
-				if botao_valor == 1:
-					break
-				time.sleep(5)	
-			Aut_Des()
-			time.sleep(5)
+				with GPIO(pins) as gpio:
+					resposta = dweet.latest_dweet(name="bmfmata")
+					bam_nuvem = resposta['with'][0]['content']['bam_nuvem']
+					vtemp = readtemp(gpio)
+					vlumi = readLumi(gpio)
+					botao_valor = gpio.digital_read(BOTAO)		
+					Aut_Liga()
+					if botao_valor == 1:
+						break
+					time.sleep(5)	
+				Aut_Des()
+				time.sleep(5)
 
 				
 
