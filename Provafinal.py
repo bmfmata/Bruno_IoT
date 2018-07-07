@@ -147,7 +147,7 @@ while True:
 		botao_valor = gpio.digital_read(BOTAO)
 		vtemp = readtemp(gpio)
 		vlumi = readLumi(gpio)
-		if botao_valor == 0:
+		if botao_valor == 0 and bam_nuvem == 0:
 			if vtemp > 10:
 				Aut_Liga()
 				time.sleep(5)
