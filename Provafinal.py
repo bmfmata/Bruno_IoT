@@ -157,8 +157,6 @@ def Man_Des():
 
 while True:
 	with GPIO(pins) as gpio:
-		aux_led_liga = gpio.digital_read(LED)
-		aux_rele_liga = gpio.digital_read(RELE)
 		resposta = dweet.latest_dweet(name="bmfmata")
 		bam_nuvem = resposta['with'][0]['content']['bam_nuvem']
 		vtemp = readtemp(gpio)
