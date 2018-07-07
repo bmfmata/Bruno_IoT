@@ -149,7 +149,7 @@ def Man_Des():
 
 	desliga(gpio)	
 	alarme = 0
-	#dweet.dweet_by_name(name="bmfmata", data={"alarme":alarme, "temp":vtemp, "lumi":vlumi, "bam_nuvem":bam_nuvem, "bebe":alarme_bebe, "reset":reset_nuvem, "liga_des":ld_nuvem,})
+	dweet.dweet_by_name(name="bmfmata", data={"alarme":alarme, "temp":vtemp, "lumi":vlumi, "bam_nuvem":bam_nuvem, "bebe":alarme_bebe, "reset":reset_nuvem, "liga_des":ld_nuvem,})
 	print "Ar Condicionado Desligado"		
 	print ("Temperatura: %2.1f" %vtemp)
 	print ("Luminosidade: %2.1f \n" %vlumi)
@@ -164,7 +164,7 @@ while True:
 		botao_valor = gpio.digital_read(BOTAO)
 		#Leitura_nuvem()
 		if botao_valor == 0:
-			if vtemp > 20:
+			if vtemp > 10:
 				aux_led_liga = gpio.digital_read(LED)
 				aux_rele_liga = gpio.digital_read(RELE)
 				if aux_led_liga and aux_rele_liga:
