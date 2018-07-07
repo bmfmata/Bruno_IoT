@@ -162,9 +162,9 @@ while True:
 			else:
 				Man_Des()
 			detectaTilt(gpio)
-			
+
 		if reset_nuvem == 1:	
-			alarme_bebe == 0
+			alarme_bebe = 0
 			
 		time.sleep(10)
 		
