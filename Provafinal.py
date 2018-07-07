@@ -164,17 +164,17 @@ while True:
 			time.sleep(10)
 		else:
 			while vtemp > 10:
-			resposta = dweet.latest_dweet(name="bmfmata")
-			bam_nuvem = resposta['with'][0]['content']['bam_nuvem']
-			vtemp = readtemp(gpio)
-			vlumi = readLumi(gpio)
-			botao_valor = gpio.digital_read(BOTAO)		
-			Aut_Liga()
-				if botao_valor == 1:
-					break
-			time.sleep(10)	
-		Aut_Des()
-		time.sleep(10)
+				resposta = dweet.latest_dweet(name="bmfmata")
+				bam_nuvem = resposta['with'][0]['content']['bam_nuvem']
+				vtemp = readtemp(gpio)
+				vlumi = readLumi(gpio)
+				botao_valor = gpio.digital_read(BOTAO)		
+				Aut_Liga()
+					if botao_valor == 1:
+						break
+				time.sleep(10)	
+			Aut_Des()
+			time.sleep(10)
 
 				
 
