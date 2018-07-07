@@ -162,7 +162,7 @@ while True:
 			if ld_nuvem == 1:
 				Man_liga()
 			else:
-				Man_des()
+				Man_Des()
 			if reset_nuvem == 1:	
 				alarme_bebe == 0
 			
