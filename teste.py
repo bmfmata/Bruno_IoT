@@ -126,7 +126,6 @@ while True:
 		vtemp = readtemp(gpio)
 		vlumi = readLumi(gpio)
 		if botao_valor == 0:
-			estado_am = 1
 			if vtemp > 10:
 				Aut_Liga()
 			else:
