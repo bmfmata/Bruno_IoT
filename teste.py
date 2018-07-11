@@ -26,6 +26,8 @@ bam_nuvem = 0
 ld_nuvem = 0
 reset_nuvem = 0
 estado_am = 0
+x = 0
+y = 0
 
 
 def readtemp(gpio):
@@ -122,21 +124,24 @@ while True:
 	with GPIO(pins) as gpio:
 		resposta = dweet.latest_dweet(name="bmfmata")
 		bam_nuvem = resposta['with'][0]['content']['bam_nuvem']
+		botao_valor = gpio.digital_read(BOTAO)
 		vtemp = readtemp(gpio)
 		vlumi = readLumi(gpio)
-		botao_valor = gpio.digital_read(BOTAO)
-		while vtemp > 10:
-			Aut_Liga()
-			resposta = dweet.latest_dweet(name="bmfmata")
-			bam_nuvem = resposta['with'][0]['content']['bam_nuvem']
-			botao_valor = gpio.digital_read(BOTAO)
-			vtemp = readtemp(gpio)
-			vlumi = readLumi(gpio)
-			if	botao_valor == 0:
-				break
-			time.sleep(10)
-		Aut_Des()
-		if	botao_valor == 0:
+		x = gpio.digital_read(LED)
+		y = gpio.digital_read(RELE)
+		if botao_valor == 0:
+			if vtemp > 10:
+				if
+				x = gpio.digital_read(LED)
+				y = gpio.digital_read(RELE)
+				if y == 0:
+					Aut_Liga()
+				x = gpio.digital_read(LED)
+				y = gpio.digital_read(RELE)
+
+			else:
+				Aut_Des()		
+		else:
 			print "Sistema Manual \n"
 		
 		time.sleep(10)
