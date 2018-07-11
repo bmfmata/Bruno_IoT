@@ -131,7 +131,6 @@ while True:
 		y = gpio.digital_read(RELE)
 		if botao_valor == 0:
 			if vtemp > 10:
-				if
 				x = gpio.digital_read(LED)
 				y = gpio.digital_read(RELE)
 				if y == 0:
