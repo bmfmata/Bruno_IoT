@@ -128,7 +128,7 @@ while True:
 		vtemp = readtemp(gpio)
 		vlumi = readLumi(gpio)
 		while vtemp > 10:
-			with GPIO(pins) as gpio:
+			
 					Aut_Liga()
 					botao_valor = gpio.digital_read(BOTAO)
 					if botao_valor == 1:
