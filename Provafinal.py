@@ -110,7 +110,7 @@ def Aut_Des():
 
 	desliga()	
 	alarme = 0
-	dweet.dweet_by_name(name="bmfmata", data={"alarme":alarme, "temp":vtemp, "lumi":vlumi, "bam_nuvem":bam_nuvem, "bebe":alarme_bebe, "reset":reset_nuvem, "estado": estado_am, "liga_des":ld_nuvem,})	dweet.dweet_by_name(name="bmfmata", data={"alarme":alarme, "temp":vtemp, "lumi":vlumi, "bam_nuvem":bam_nuvem, "bebe":alarme_bebe, "reset":reset_nuvem, "liga_des":ld_nuvem,})
+	dweet.dweet_by_name(name="bmfmata", data={"alarme":alarme, "temp":vtemp, "lumi":vlumi, "bam_nuvem":bam_nuvem, "bebe":alarme_bebe, "reset":reset_nuvem, "estado": estado_am, "liga_des":ld_nuvem,})
 	print "Sistema Automatico! \n"				
 	print "Ar Condicionado Desligado"		
 	print ("Temperatura: %2.1f" %vtemp)
