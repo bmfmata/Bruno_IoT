@@ -25,6 +25,7 @@ alarme_bebe = 0
 bam_nuvem = 0
 ld_nuvem = 0
 reset_nuvem = 0
+estado_am = 0
 
 
 def readtemp(gpio):
@@ -98,7 +99,7 @@ def Aut_Liga():
 
 	liga()
 	alarme = 1
-	dweet.dweet_by_name(name="bmfmata", data={"alarme":alarme, "temp":vtemp, "lumi":vlumi, "bam_nuvem":bam_nuvem, "bebe":alarme_bebe, "reset":reset_nuvem, "liga_des":ld_nuvem,})
+	dweet.dweet_by_name(name="bmfmata", data={"alarme":alarme, "temp":vtemp, "lumi":vlumi, "bam_nuvem":bam_nuvem, "bebe":alarme_bebe, "reset":reset_nuvem, "estado": estado_am, "liga_des":ld_nuvem,})
 	print "Sistema Automatico! \n"		
 	print "Ar Condicionado Ligado"		
 	print ("Temperatura: %2.1f" %vtemp)
@@ -109,23 +110,18 @@ def Aut_Des():
 
 	desliga()	
 	alarme = 0
-	dweet.dweet_by_name(name="bmfmata", data={"alarme":alarme, "temp":vtemp, "lumi":vlumi, "bam_nuvem":bam_nuvem, "bebe":alarme_bebe, "reset":reset_nuvem, "liga_des":ld_nuvem,})
+	dweet.dweet_by_name(name="bmfmata", data={"alarme":alarme, "temp":vtemp, "lumi":vlumi, "bam_nuvem":bam_nuvem, "bebe":alarme_bebe, "reset":reset_nuvem, "estado": estado_am, "liga_des":ld_nuvem,})	dweet.dweet_by_name(name="bmfmata", data={"alarme":alarme, "temp":vtemp, "lumi":vlumi, "bam_nuvem":bam_nuvem, "bebe":alarme_bebe, "reset":reset_nuvem, "liga_des":ld_nuvem,})
 	print "Sistema Automatico! \n"				
 	print "Ar Condicionado Desligado"		
 	print ("Temperatura: %2.1f" %vtemp)
 	print ("Luminosidade: %2.1f \n" %vlumi)
 	
 
-
-
-	
-	
-
 def Man_Liga():
 
 	liga()
 	alarme = 1
-	dweet.dweet_by_name(name="bmfmata", data={"alarme":alarme, "temp":vtemp, "lumi":vlumi, "bam_nuvem":bam_nuvem, "bebe":alarme_bebe, "reset":reset_nuvem, "liga_des":ld_nuvem,})
+	dweet.dweet_by_name(name="bmfmata", data={"alarme":alarme, "temp":vtemp, "lumi":vlumi, "bam_nuvem":bam_nuvem, "bebe":alarme_bebe, "reset":reset_nuvem, "estado": estado_am, "liga_des":ld_nuvem,})
 	print "Ar Condicionado Ligado"		
 	print ("Temperatura: %2.1f" %vtemp)
 	print ("Luminosidade: %2.1f \n" %vlumi)
@@ -134,7 +130,7 @@ def Man_Des():
 
 	desliga()	
 	alarme = 0
-	dweet.dweet_by_name(name="bmfmata", data={"alarme":alarme, "temp":vtemp, "lumi":vlumi, "bam_nuvem":bam_nuvem, "bebe":alarme_bebe, "reset":reset_nuvem, "liga_des":ld_nuvem,})
+	dweet.dweet_by_name(name="bmfmata", data={"alarme":alarme, "temp":vtemp, "lumi":vlumi, "bam_nuvem":bam_nuvem, "bebe":alarme_bebe, "reset":reset_nuvem, "estado": estado_am, "liga_des":ld_nuvem,})
 	print "Ar Condicionado Desligado"		
 	print ("Temperatura: %2.1f" %vtemp)
 	print ("Luminosidade: %2.1f \n" %vlumi)
@@ -147,6 +143,7 @@ while True:
 		vtemp = readtemp(gpio)
 		vlumi = readLumi(gpio)
 		if botao_valor == 0 and bam_nuvem == 0:
+			estado_am = 1
 			if vtemp > 10:
 				Aut_Liga()
 				
@@ -156,7 +153,8 @@ while True:
 				
 				detectaTilt(gpio)
 		else:
-	 		print "Sistema Manual \n"
+	 		estado_am = 0
+			print "Sistema Manual \n"
 			if ld_nuvem == 1:
 				Man_Liga()
 			else:
