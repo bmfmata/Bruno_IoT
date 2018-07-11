@@ -127,21 +127,16 @@ while True:
 		botao_valor = gpio.digital_read(BOTAO)
 		vtemp = readtemp(gpio)
 		vlumi = readLumi(gpio)
-		while vtemp > 10:
+		x = gpio.digital_read(LED)
+		y = gpio.digital_read(RELE)
+		if botao_valor == 0:
+			if vtemp > 10:				
+				Aut_Liga()
 			
-					Aut_Liga()
-					botao_valor = gpio.digital_read(BOTAO)
-					if botao_valor == 1:
-						break
-					time.sleep(10)
-					vtemp = readtemp(gpio)
-					vlumi = readLumi(gpio)
-					resposta = dweet.latest_dweet(name="bmfmata")
-					bam_nuvem = resposta['with'][0]['content']['bam_nuvem']
-		if botao_valor == 1:
-			print "Sistema Manual \n"
+			else:
+				Aut_Des()		
 		else:
-			Aut_Des()		
+			print "Sistema Manual \n"
 		
 		time.sleep(10)
 		
