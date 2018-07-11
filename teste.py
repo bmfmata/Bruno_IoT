@@ -129,15 +129,16 @@ while True:
 		vlumi = readLumi(gpio)
 		if botao_valor == 0:
 			while vtemp > 10:
-				Aut_Liga()
-				botao_valor = gpio.digital_read(BOTAO)
-				if botao_valor == 1:
-					break
-				time.sleep(10)
-				vtemp = readtemp(gpio)
-				vlumi = readLumi(gpio)
-				resposta = dweet.latest_dweet(name="bmfmata")
-				bam_nuvem = resposta['with'][0]['content']['bam_nuvem']
+				with GPIO(pins) as gpio:
+					Aut_Liga()
+					botao_valor = gpio.digital_read(BOTAO)
+					if botao_valor == 1:
+						break
+					time.sleep(10)
+					vtemp = readtemp(gpio)
+					vlumi = readLumi(gpio)
+					resposta = dweet.latest_dweet(name="bmfmata")
+					bam_nuvem = resposta['with'][0]['content']['bam_nuvem']
 			Aut_Des()		
 		else:
 			print "Sistema Manual \n"
