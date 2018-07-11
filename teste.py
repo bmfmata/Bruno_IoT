@@ -120,17 +120,23 @@ def Man_Des():
 
 while True:
 	with GPIO(pins) as gpio:
-		#resposta = dweet.latest_dweet(name="bmfmata")
-		#bam_nuvem = resposta['with'][0]['content']['bam_nuvem']
-		botao_valor = gpio.digital_read(BOTAO)
+		resposta = dweet.latest_dweet(name="bmfmata")
+		bam_nuvem = resposta['with'][0]['content']['bam_nuvem']
 		vtemp = readtemp(gpio)
 		vlumi = readLumi(gpio)
-		if botao_valor == 0:
-			if vtemp > 10:
-				Aut_Liga()
-			else:
-				Aut_Des()		
-		else:
+		botao_valor = gpio.digital_read(BOTAO)
+		while vtemp > 10:
+			Aut_Liga()
+			resposta = dweet.latest_dweet(name="bmfmata")
+			bam_nuvem = resposta['with'][0]['content']['bam_nuvem']
+			botao_valor = gpio.digital_read(BOTAO)
+			vtemp = readtemp(gpio)
+			vlumi = readLumi(gpio)
+			if	botao_valor == 0:
+				break
+			time.sleep(10)
+		Aut_Des()
+		if	botao_valor == 0:
 			print "Sistema Manual \n"
 		
 		time.sleep(10)
