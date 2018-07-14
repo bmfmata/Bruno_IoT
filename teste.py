@@ -154,13 +154,13 @@ with GPIO(pins) as gpio:
 			digital[1]=0
 			
 		writeDigital(gpio, digital)
-		time.sleep(0.01)
+		time.sleep(0.1)
 		rele = gpio.digital_read(RELE)
-		if rele == 1:
-			vtemp = vtemp + 140
-		else:
-			vtemp = vtemp
-			
+		#if rele == 1:
+		#	vtemp = vtemp + 140
+		#else:
+		#	vtemp = vtemp
+
 
 		dweet.dweet_by_name(name="bmfmata", data={"bam_nuvem":bam_nuvem})
 		print ("Temperatura: %2.1f" %vtemp)
