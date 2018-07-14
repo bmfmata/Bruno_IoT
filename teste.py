@@ -42,7 +42,7 @@ def readtemp(gpio):
 
 	#adc_temp = (adcout *5.0/1023-0.5)*100
 	
-	return adcount2
+	return adcout2
 
 def readLumi(gpio):
 
