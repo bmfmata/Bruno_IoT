@@ -7,11 +7,9 @@ from gpio_96boards import GPIO
 
 GPIO_CS = GPIO.gpio_id('GPIO_CS')
 RELE = GPIO.gpio_id('GPIO_A')
-LED = GPIO.gpio_id('GPIO_C')
-BOTAO = GPIO.gpio_id('GPIO_E')
-TILT = GPIO.gpio_id('GPIO_G')
+BOTAO = GPIO.gpio_id('GPIO_C')
 
-pins = ((GPIO_CS, 'out'), (RELE, 'out'), (TILT, 'in') , (BOTAO, 'in'), (LED, 'out'),)
+pins = ((GPIO_CS, 'out'), (RELE, 'out'), (TILT, 'in') , (BOTAO, 'in'))
 
 spi = spidev.SpiDev()
 spi.open(0,0)
@@ -66,14 +64,14 @@ def Leitura_nuvem():
 	
 def liga():
 	
-	gpio.digital_write(LED, GPIO.HIGH)
+	#gpio.digital_write(LED, GPIO.HIGH)
 	gpio.digital_write(RELE, GPIO.HIGH)
 
 	
 def desliga():
 
 
-	gpio.digital_write(LED, GPIO.LOW)
+	#gpio.digital_write(LED, GPIO.LOW)
 	gpio.digital_write(RELE, GPIO.LOW)
 
 
@@ -135,36 +133,35 @@ def Man_Des():
 	print ("Temperatura: %2.1f" %vtemp)
 	print ("Luminosidade: %2.1f \n" %vlumi)
 
-if __name__=='__main__':
+with GPIO(pins) as gpio:
 	while True:
-		with GPIO(pins) as gpio:
-			Leitura_nuvem()
-			botao_valor = gpio.digital_read(BOTAO)
-			vtemp = readtemp(gpio)
-			vlumi = readLumi(gpio)
-			if botao_valor == 0 and bam_nuvem == 0:
-				estado_am = 1
-				if vtemp > 10:
-					Aut_Liga()
+		Leitura_nuvem()
+		botao_valor = gpio.digital_read(BOTAO)
+		vtemp = readtemp(gpio)
+		vlumi = readLumi(gpio)
+		if botao_valor == 0 and bam_nuvem == 0:
+			estado_am = 1
+			if vtemp > 20:
+				Aut_Liga()
 				
-					detectaTilt(gpio)	
-				else:
-					Aut_Des()
-				
-					detectaTilt(gpio)
+					#detectaTilt(gpio)	
 			else:
-	 			estado_am = 0
-				print "Sistema Manual \n"
-				if ld_nuvem == 1:
-					Man_Liga()
-				else:
-					Man_Des()
-				detectaTilt(gpio)
+				Aut_Des()
+				
+					#detectaTilt(gpio)
+		else:
+	 		estado_am = 0
+			print "Sistema Manual \n"
+			if ld_nuvem == 1:
+				Man_Liga()
+			else:
+				Man_Des()
+				#detectaTilt(gpio)
 
-			if reset_nuvem == 1:	
-				alarme_bebe = 0
+		if reset_nuvem == 1:	
+			alarme_bebe = 0
 			
-			time.sleep(10)
+		time.sleep(10)
 		
 		
 
