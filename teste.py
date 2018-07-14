@@ -145,12 +145,14 @@ with GPIO(pins) as gpio:
 		resposta = dweet.latest_dweet(name="bmfmata")
 		bam_nuvem = resposta['with'][0]['content']['bam_nuvem']
 		botao_valor = gpio.digital_read(BOTAO)
-		if vlumi> 500:
+		if vtemp> 150:
 			digital[0]=1
 			digital[1]=1
+			vtemp = vtemp + 140
 		else:
 			digital[0]=0
-			digital[1]=0			
+			digital[1]=0
+			vtemp = vtemp		
 		writeDigital(gpio, digital)
 		dweet.dweet_by_name(name="bmfmata", data={"bam_nuvem":bam_nuvem})
 		print ("Temperatura: %2.1f" %vtemp)
