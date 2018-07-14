@@ -40,9 +40,9 @@ def readtemp(gpio):
 	adcout = (r[1] << 8) & 0b1100000000
 	adcout2 = adcout | (r[2] & 0xff)		
 
-	#adc_temp = (adcout *5.0/1023-0.5)*100
+	adc_temp = (adcout *5.0/1023-0.5)*100
 	
-	return adcout2
+	return adc_temp
 
 def readLumi(gpio):
 
@@ -147,7 +147,7 @@ with GPIO(pins) as gpio:
 		botao_valor = gpio.digital_read(BOTAO)
 		if vlumi > 100:
 			digital[0]=1
-			digital[1]=1
+			digital[1]=0
 			writeDigital(gpio, digital)
 			
 			
