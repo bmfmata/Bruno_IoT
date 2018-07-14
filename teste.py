@@ -120,8 +120,9 @@ def Man_Des():
 	print ("Luminosidade: %2.1f \n" %vlumi)
 
 
-with GPIO(pins) as gpio:
-	while True:
+
+while True:
+	with GPIO(pins) as gpio:
 		resposta = dweet.latest_dweet(name="bmfmata")
 		bam_nuvem = resposta['with'][0]['content']['bam_nuvem']
 		botao_valor = gpio.digital_read(BOTAO)
