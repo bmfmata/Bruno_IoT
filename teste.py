@@ -138,7 +138,8 @@ with GPIO(pins) as gpio:
 	while True:
 		digital = [0,0]
 		vlumi = readLumi(gpio)
-		vtemp = readtemp(gpio)
+		xtemp = readtemp(gpio)
+		vtemp = (xtemp *5.0/1023-0.5)*100
 		resposta = dweet.latest_dweet(name="bmfmata")
 		bam_nuvem = resposta['with'][0]['content']['bam_nuvem']
 		botao_valor = gpio.digital_read(BOTAO)
