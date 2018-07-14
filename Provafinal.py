@@ -9,7 +9,7 @@ GPIO_CS = GPIO.gpio_id('GPIO_CS')
 RELE = GPIO.gpio_id('GPIO_A')
 BOTAO = GPIO.gpio_id('GPIO_C')
 
-pins = ((GPIO_CS, 'out'), (RELE, 'out'), , (BOTAO, 'in'))
+pins = ((GPIO_CS, 'out'), (RELE, 'out'),  (BOTAO, 'in'))
 
 spi = spidev.SpiDev()
 spi.open(0,0)
