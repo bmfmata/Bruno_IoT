@@ -6,10 +6,10 @@ from libsoc import gpio
 from gpio_96boards import GPIO
 
 GPIO_CS = GPIO.gpio_id('GPIO_CS')
-RELE = GPIO.gpio_id('GPIO_A')
+RELE = GPIO.gpio_id('GPIO_G')
 LED = GPIO.gpio_id('GPIO_C')
 BOTAO = GPIO.gpio_id('GPIO_E')
-TILT = GPIO.gpio_id('GPIO_G')
+
 
 pins = ((GPIO_CS, 'out'), (RELE, 'out'), (TILT, 'in') , (BOTAO, 'in'), (LED, 'out'),)
 
@@ -148,18 +148,15 @@ with GPIO(pins) as gpio:
 		if vlumi> 500:
 			digital[0]=1
 			digital[1]=1
-				
 		else:
 			digital[0]=0
-			digital[1]=0
-			
-			
+			digital[1]=0			
 		writeDigital(gpio, digital)
 		dweet.dweet_by_name(name="bmfmata", data={"bam_nuvem":bam_nuvem})
 		print ("Temperatura: %2.1f" %vtemp)
-		print ("Luminosidade: %2.1f \n" %vlumi)
-			
-		time.sleep(5)		#print "Sistema Manual \n"
+		print ("Luminosidade: %2.1f \n" %vlumi)	
+		time.sleep(5)		
+		#print "Sistema Manual \n"
 		
 	
 		
