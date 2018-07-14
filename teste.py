@@ -133,6 +133,7 @@ if __name__=='__main__':
 			if botao_valor == 0:
 				if vtemp > 10:				
 					Aut_Liga()
+					time.sleep(5)
 			
 				else:
 					Aut_Des()		
