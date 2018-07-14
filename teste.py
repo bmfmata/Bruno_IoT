@@ -137,8 +137,8 @@ def Man_Des():
 with GPIO(pins) as gpio:
 	while True:
 		digital = [0,0]
-		vtemp = readtemp(gpio)
 		vlumi = readLumi(gpio)
+		vtemp = readtemp(gpio)
 		resposta = dweet.latest_dweet(name="bmfmata")
 		bam_nuvem = resposta['with'][0]['content']['bam_nuvem']
 		botao_valor = gpio.digital_read(BOTAO)
