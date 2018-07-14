@@ -40,7 +40,7 @@ def readtemp(gpio):
 	adcout = (r[1] << 8) & 0b1100000000
 	adcout = adcout | (r[2] & 0xff)		
 
-	adc_temp = (adcout *3.0/1023-0.3)*100
+	adc_temp = (adcout *3.0/1023-0.5)*100
 	
 	return adc_temp
 
