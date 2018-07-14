@@ -130,14 +130,14 @@ if __name__=='__main__':
 			vtemp = readtemp(gpio)
 			vlumi = readLumi(gpio)
 		
-		if botao_valor == 0:
-			if vtemp > 10:				
-				Aut_Liga()
+			if botao_valor == 0:
+				if vtemp > 10:				
+					Aut_Liga()
 			
+				else:
+					Aut_Des()		
 			else:
-				Aut_Des()		
-		else:
-			print "Sistema Manual \n"
+				print "Sistema Manual \n"
 		
 		time.sleep(5)
 		
