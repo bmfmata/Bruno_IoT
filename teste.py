@@ -152,6 +152,7 @@ with GPIO(pins) as gpio:
 			digital[0]=0
 			digital[1]=0
 		writeDigital(gpio, digital)
+		vtemp = (xtemp *5.0/1023-0.5)*100
 		print ("Temperatura: %2.1f" %vtemp)
 		print ("Luminosidade: %2.1f \n" %vlumi)
 			
