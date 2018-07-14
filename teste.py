@@ -11,7 +11,7 @@ LED = GPIO.gpio_id('GPIO_C')
 BOTAO = GPIO.gpio_id('GPIO_E')
 
 
-pins = ((GPIO_CS, 'out'), (RELE, 'out'), (TILT, 'in') , (BOTAO, 'in'), (LED, 'out'),)
+pins = ((GPIO_CS, 'out'), (RELE, 'out'), (BOTAO, 'in'), (LED, 'out'),)
 
 spi = spidev.SpiDev()
 spi.open(0,0)
