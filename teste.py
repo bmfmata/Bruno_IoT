@@ -164,7 +164,7 @@ while True:
 		
 			#print "Sistema Manual \n"
 		
-	time.sleep(5)
+	
 		
 		
 
