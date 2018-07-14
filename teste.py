@@ -30,7 +30,7 @@ x = 0
 y = 0
 
 
-def readLumi(gpio):
+def readtemp(gpio):
 
 	gpio.digital_write(GPIO_CS, GPIO.HIGH)
 	time.sleep(0.0002)
@@ -44,7 +44,7 @@ def readLumi(gpio):
 	
 	return adc_temp
 
-def readtemp(gpio):
+def readLumi(gpio):
 
 	gpio.digital_write(GPIO_CS, GPIO.HIGH)
 	time.sleep(0.0002)
@@ -142,21 +142,15 @@ with GPIO(pins) as gpio:
 		resposta = dweet.latest_dweet(name="bmfmata")
 		bam_nuvem = resposta['with'][0]['content']['bam_nuvem']
 		botao_valor = gpio.digital_read(BOTAO)
-		#if vtemp > 10:
-		digital[0]=1
-		digital[1]=1				
+			if vtemp > 10:
+				digital[0]=1
+				digital[1]=1
+			else:
+				digital[0]=0
+				digital[1]=0
 		writeDigital(gpio, digital)
 		print ("Temperatura: %2.1f" %vtemp)
 		print ("Luminosidade: %2.1f \n" %vlumi)
-		#else:
-		#digital[0]=0
-		#digital[1]=0				
-		#	writeDigital(gpio, digital)
-		#	print ("Temperatura: %2.1f" %vtemp)
-		#	print ("Luminosidade: %2.1f \n" %vlumi)
-			
-			
-			
 			
 		time.sleep(5)		#print "Sistema Manual \n"
 		
