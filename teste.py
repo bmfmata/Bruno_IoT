@@ -141,8 +141,7 @@ if __name__=='__main__':
 	while True:
 		with GPIO(pins) as gpio:
 			digital = [0,0]
-			resposta = dweet.latest_dweet(name="bmfmata")
-			bam_nuvem = resposta['with'][0]['content']['bam_nuvem']
+			
 			botao_valor = gpio.digital_read(BOTAO)
 			vtemp = readtemp(gpio)
 			vlumi = readLumi(gpio)
@@ -152,15 +151,19 @@ if __name__=='__main__':
 					digital[0]=1
 					digital[1]=1				
 					writeDigital(gpio, digital)
+					resposta = dweet.latest_dweet(name="bmfmata")
+					bam_nuvem = resposta['with'][0]['content']['bam_nuvem']
 			
 				else:
 					digital[0]=0
 					digital[1]=0				
-					writeDigital(gpio, digital)		
+					writeDigital(gpio, digital)	
+					resposta = dweet.latest_dweet(name="bmfmata")
+					bam_nuvem = resposta['with'][0]['content']['bam_nuvem']	
 			else:
 				print "Sistema Manual \n"
 		
-			#time.sleep(5)
+			time.sleep(5)
 		
 		
 
