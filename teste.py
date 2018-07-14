@@ -38,7 +38,7 @@ def readtemp(gpio):
 	r = spi.xfer2([0x01, 0xA0, 0x00])
 	gpio.digital_write(GPIO_CS, GPIO.HIGH)
 	adcout = (r[1] << 8) & 0b1100000000
-	adcout2 = adcout | (r[2] & 0xff)		
+	adcout = adcout | (r[2] & 0xff)		
 
 	adc_temp = (adcout *5.0/1023-0.5)*100
 	
