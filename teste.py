@@ -152,7 +152,7 @@ with GPIO(pins) as gpio:
 		else:
 			digital[0]=0
 			digital[1]=0
-			xtemp = readtemp(gpio)
+			
 			
 		writeDigital(gpio, digital)
 		dweet.dweet_by_name(name="bmfmata", data={"bam_nuvem":bam_nuvem})
