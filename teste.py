@@ -135,9 +135,8 @@ def Man_Des():
 	print ("Luminosidade: %2.1f \n" %vlumi)
 
 
-
-with GPIO(pins) as gpio:
-	while True:
+while True:
+	with GPIO(pins) as gpio:
 		digital = [0,0]
 		vtemp = readtemp(gpio)
 		vlumi = readLumi(gpio)
