@@ -160,6 +160,7 @@ with GPIO(pins) as gpio:
 			vtemp = vtemp + 140
 		else:
 			vtemp = vtemp
+			
 
 		dweet.dweet_by_name(name="bmfmata", data={"bam_nuvem":bam_nuvem})
 		print ("Temperatura: %2.1f" %vtemp)
