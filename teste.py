@@ -40,7 +40,7 @@ def readtemp(gpio):
 	adcout = (r[1] << 8) & 0b1100000000
 	adcout = adcout | (r[2] & 0xff)		
 
-	adc_temp = ((adcout *5.0/1023-0.5)*100)-38.6
+	adc_temp = (adcout *5.0/1023-0.5)*100
 	
 	return adc_temp
 
@@ -145,7 +145,6 @@ with GPIO(pins) as gpio:
 		resposta = dweet.latest_dweet(name="bmfmata")
 		bam_nuvem = resposta['with'][0]['content']['bam_nuvem']
 		botao_valor = gpio.digital_read(BOTAO)
-		rele = gpio.digital_read(RELE)
 		if vlumi > 100:
 			digital[0]=1
 			digital[1]=1
@@ -155,10 +154,13 @@ with GPIO(pins) as gpio:
 			digital[1]=0
 			
 		writeDigital(gpio, digital)
-		#if rele == 1:
-		#	vtemp = vtemp + 140
-		#else
-		#	vtemp = vtemp
+		time.sleep(0.01)
+		rele = gpio.digital_read(RELE)
+		if rele == 1:
+			vtemp = vtemp + 140
+		else
+			vtemp = vtemp
+
 		dweet.dweet_by_name(name="bmfmata", data={"bam_nuvem":bam_nuvem})
 		print ("Temperatura: %2.1f" %vtemp)
 		print ("Luminosidade: %2.1f \n" %vlumi)	
