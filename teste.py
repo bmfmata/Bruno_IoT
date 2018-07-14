@@ -30,7 +30,7 @@ x = 0
 y = 0
 
 
-def readtemp(gpio):
+def readllumi(gpio):
 
 	gpio.digital_write(GPIO_CS, GPIO.HIGH)
 	time.sleep(0.0002)
@@ -44,7 +44,7 @@ def readtemp(gpio):
 	
 	return adc_temp
 
-def readLumi(gpio):
+def readtemp(gpio):
 
 	gpio.digital_write(GPIO_CS, GPIO.HIGH)
 	time.sleep(0.0002)
@@ -134,9 +134,8 @@ def Man_Des():
 	print ("Temperatura: %2.1f" %vtemp)
 	print ("Luminosidade: %2.1f \n" %vlumi)
 
-
-while True:
-	with GPIO(pins) as gpio:
+with GPIO(pins) as gpio:
+	while True:
 		digital = [0,0]
 		vtemp = readtemp(gpio)
 		vlumi = readLumi(gpio)
