@@ -137,8 +137,9 @@ def Man_Des():
 
 
 if __name__=='__main__':
-	with GPIO(pins) as gpio:
-		while True:
+	
+	while True:
+		with GPIO(pins) as gpio:
 			digital = [0,0]
 			resposta = dweet.latest_dweet(name="bmfmata")
 			bam_nuvem = resposta['with'][0]['content']['bam_nuvem']
