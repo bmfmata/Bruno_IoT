@@ -30,7 +30,7 @@ x = 0
 y = 0
 
 
-def readllumi(gpio):
+def readLumi(gpio):
 
 	gpio.digital_write(GPIO_CS, GPIO.HIGH)
 	time.sleep(0.0002)
