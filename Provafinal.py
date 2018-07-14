@@ -161,7 +161,7 @@ with GPIO(pins) as gpio:
 		if reset_nuvem == 1:	
 			alarme_bebe = 0
 			
-		time.sleep(5)
+		time.sleep(10)
 		
 		
 
