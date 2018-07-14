@@ -149,13 +149,13 @@ with GPIO(pins) as gpio:
 			digital[0]=1
 			digital[1]=1
 			writeDigital(gpio, digital)
-			vtemp = vtemp + 56
+			
 			
 		else:
 			digital[0]=0
 			digital[1]=0
 			writeDigital(gpio, digital)
-			vtemp = vtemp
+			
 		dweet.dweet_by_name(name="bmfmata", data={"bam_nuvem":bam_nuvem})
 		print ("Temperatura: %2.1f" %vtemp)
 		print ("Luminosidade: %2.1f \n" %vlumi)	
