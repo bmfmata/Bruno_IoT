@@ -141,7 +141,7 @@ with GPIO(pins) as gpio:
 		vlumi = readLumi(gpio)
 		if botao_valor == 0 and bam_nuvem == 0:
 			estado_am = 1
-			if vtemp > 20:
+			if vtemp > 24:
 				Aut_Liga()
 				
 					#detectaTilt(gpio)	
