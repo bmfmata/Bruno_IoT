@@ -79,6 +79,21 @@ def desliga():
 	gpio.digital_write(RELE, GPIO.LOW)
 
 
+def readDigital(gpio):
+	digital = [0,0]
+	digital[0] = gpio.digital_read(RELE)
+	digital[1] = gpio.digital_read(LED)
+
+	return digital
+
+def writeDigital(gpio, digital):
+	write = digital
+	gpio.digital_write(RELE, write[0])
+	gpio.digital_write(LED, write[1])
+
+	return digital
+
+
 def Aut_Liga():
 
 	liga()
@@ -124,6 +139,7 @@ def Man_Des():
 if __name__=='__main__':
 	with GPIO(pins) as gpio:
 		while True:
+			digital = [0,0]
 			resposta = dweet.latest_dweet(name="bmfmata")
 			bam_nuvem = resposta['with'][0]['content']['bam_nuvem']
 			botao_valor = gpio.digital_read(BOTAO)
@@ -131,12 +147,15 @@ if __name__=='__main__':
 			vlumi = readLumi(gpio)
 		
 			if botao_valor == 0:
-				if vtemp > 10:				
-					Aut_Liga()
-					time.sleep(5)
+				if vtemp > 10:
+					digital[0]=1
+					digital[1]=1				
+					writeDigital(gpio, digital)
 			
 				else:
-					Aut_Des()		
+					digital[0]=0
+					digital[1]=0				
+					writeDigital(gpio, digital)		
 			else:
 				print "Sistema Manual \n"
 		
