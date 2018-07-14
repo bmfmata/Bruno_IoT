@@ -138,30 +138,33 @@ def Man_Des():
 
 
 while True:
-	with GPIO(pins) as gpio:
-		digital = [0,0]
-			
-		botao_valor = gpio.digital_read(BOTAO)
-		vtemp = readtemp(gpio)
-		vlumi = readLumi(gpio)
+	vtemp = readtemp(gpio)
+	print ("Temperatura: %2.1f" %vtemp)
+	while vtemp > 10:
+		with GPIO(pins) as gpio:
+			digital = [0,0]
+			digital[0]=1
+			digital[1]=1				
+			writeDigital(gpio, digital)
+			time.sleep(5)
+			vtemp = readtemp(gpio)
+			vlumi = readLumi(gpio)
+			botao_valor = gpio.digital_read(BOTAO)
+			print ("Temperatura: %2.1f" %vtemp)
+			print ("Luminosidade: %2.1f \n" %vlumi)
 			#resposta = dweet.latest_dweet(name="bmfmata")
 			#bam_nuvem = resposta['with'][0]['content']['bam_nuvem']
-			
-		if botao_valor == 0:
-			if vtemp > 10:
-				digital[0]=1
-				digital[1]=1				
-				writeDigital(gpio, digital)
-					
-			else:
-				digital[0]=0
-				digital[1]=0				
-				writeDigital(gpio, digital)	
-					
-		else:
-			print "Sistema Manual \n"
+	with GPIO(pins) as gpio:
+			digital = [0,0]
+			digital[0]=0
+			digital[1]=0				
+			writeDigital(gpio, digital)	
+	
+
 		
-		time.sleep(5)
+			#print "Sistema Manual \n"
+		
+	time.sleep(5)
 		
 		
 
