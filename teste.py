@@ -148,8 +148,8 @@ with GPIO(pins) as gpio:
 		digital[0]=1
 		digital[1]=1				
 		writeDigital(gpio, digital)
-			print ("Temperatura: %2.1f" %vtemp)
-			print ("Luminosidade: %2.1f \n" %vlumi)
+		print ("Temperatura: %2.1f" %vtemp)
+		print ("Luminosidade: %2.1f \n" %vlumi)
 		#else:
 		#digital[0]=0
 		#digital[1]=0				
