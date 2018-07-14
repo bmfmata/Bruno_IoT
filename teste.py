@@ -139,7 +139,7 @@ if __name__=='__main__':
 			else:
 				print "Sistema Manual \n"
 		
-			time.sleep(5)
+			#time.sleep(5)
 		
 		
 
