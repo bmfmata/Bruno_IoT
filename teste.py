@@ -158,7 +158,7 @@ with GPIO(pins) as gpio:
 		rele = gpio.digital_read(RELE)
 		if rele == 1:
 			vtemp = vtemp + 140
-		else
+		else:
 			vtemp = vtemp
 
 		dweet.dweet_by_name(name="bmfmata", data={"bam_nuvem":bam_nuvem})
