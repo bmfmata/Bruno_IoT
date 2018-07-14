@@ -38,11 +38,11 @@ def readtemp(gpio):
 	r = spi.xfer2([0x01, 0x80, 0x00])
 	gpio.digital_write(GPIO_CS, GPIO.HIGH)
 	adcout = (r[1] << 8) & 0b1100000000
-	adcout = adcout | (r[2] & 0xff)		
+	adcout2 = adcout | (r[2] & 0xff)		
 
-	adc_temp = (adcout *5.0/1023-0.5)*100
+	#adc_temp = (adcout *5.0/1023-0.5)*100
 	
-	return adc_temp
+	return adcout2
 
 def readLumi(gpio):
 
