@@ -136,8 +136,8 @@ def Man_Des():
 	print ("Luminosidade: %2.1f \n" %vlumi)
 
 if __name__=='__main__':
-	with GPIO(pins) as gpio:
-		while True:
+	while True:
+		with GPIO(pins) as gpio:
 			Leitura_nuvem()
 			botao_valor = gpio.digital_read(BOTAO)
 			vtemp = readtemp(gpio)
