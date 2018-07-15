@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-#Declaração e importação das Bibliotecas
+#Declaracao e importacao das Bibliotecas
 from dweet import Dweet
 import spidev
 import time
