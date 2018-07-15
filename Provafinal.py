@@ -216,40 +216,33 @@ def Man_Des():
 
 #Aqui é executado o programa principal até que seja interrompido
 with GPIO(pins) as gpio:
-	while True:
-		
+	while True:		
 		#Faz a leitura e atualização das variáveis
 		Leitura_nuvem()
 		botao_valor = gpio.digital_read(BOTAO)
 		vtemp = readtemp(gpio)
-		vlumi = readLumi(gpio)
-		
+		vlumi = readLumi(gpio)		
 		#Verifica se o botão local ou botão na nuvem(aplicativo) foi acionado
-		if botao_valor == 0 or bam_nuvem == 0:
-			
+		if botao_valor == 0 or bam_nuvem == 0:			
 			#Se nenhum acionado o sistema está em automático e caso temperatura maior que 24, liga
 			#o ar condicionadi e uma variável na nuvem estado_am receberá 1, informado ao app que
 			#está em automático
 			estado_am = 1
-			if vtemp > 24:
-				Aut_Liga()
-			
+			if vtemp > 23:
+				Aut_Liga()			
 			#caso temperatura medida for menor que 24, desliga ar condicionado		
 			else:
-				Aut_Des()
-		
+				Aut_Des()		
 		#Caso um dos botões seja acionado, o sistema vai para manual e a variável estado_am recebe 0
 		# E informa estar em manual para nuvem (app)		
 		else:
 	 		estado_am = 0
-			print "Sistema Manual \n"
-			
+			print "Sistema Manual \n"			
 			#Verifica se o botão de ligar da nuvem(App) está na condição de liga ou desliga
 			if ld_nuvem == 1:
 				Man_Liga()
 			else:
 				Man_Des()
-		
 		#Atualiza o sistema de 10 em 10 segundos		
 		time.sleep(10)
 		
