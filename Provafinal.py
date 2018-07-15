@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-#Declaracao e importacao das Bibliotecas
+
 from dweet import Dweet
 import spidev
 import time
@@ -8,7 +8,6 @@ from libsoc import gpio
 from gpio_96boards import GPIO
 
 
-#Declaração e definição das Entradas e Saídas
 GPIO_CS = GPIO.gpio_id('GPIO_CS')
 RELE = GPIO.gpio_id('GPIO_A')
 BOTAO = GPIO.gpio_id('GPIO_C')
@@ -19,7 +18,6 @@ pins = ((GPIO_CS, 'out'), (RELE, 'out'),  (BOTAO, 'in'))
 
 
 
-#Definição de parâmetros para portas analógicas
 spi = spidev.SpiDev()
 spi.open(0,0)
 spi.max_speed_hz = 10000
@@ -28,8 +26,6 @@ spi.bits_per_word = 8
 
 
 
-#Declaração de uma variável Dweet para interface com sistema 
-# de nuvem
 dweet = Dweet()
 
 
@@ -37,7 +33,6 @@ dweet = Dweet()
 
 
 
-#Declaração de variáveis
 alarme_bebe = 0
 reset_nuvem = 0
 bam_nuvem = 0
@@ -50,7 +45,6 @@ estado_am = 0
 
 
 
-#Leitura e conversão da leitura do sensor para °C
 def readtemp(gpio):
 
 	gpio.digital_write(GPIO_CS, GPIO.HIGH)
@@ -70,7 +64,7 @@ def readtemp(gpio):
 
 
 
-#Leitura do sensor de Luminosidade
+
 def readLumi(gpio):
 
 	gpio.digital_write(GPIO_CS, GPIO.HIGH)
@@ -89,8 +83,7 @@ def readLumi(gpio):
 
 
 
-#Leitura dos valores de variáveis na nuvem e seus resultados
-#armazenados em variáveis locais para ser utilizada no programa
+
 def Leitura_nuvem():
 	global bam_nuvem, ld_nuvem, reset_nuvem
 	resposta = dweet.latest_dweet(name="bmfmata")
@@ -130,9 +123,7 @@ def Leitura_nuvem():
 
 
 
-#No automático, liga o relé(ar condicionado), tranforma variável alarme (que informa a nuvem se o
-# sistema está ligado ou não) em 1, atualiza o valor de todas as variáveis na nuvem de acordo com essa
-#condição e print na tela do terminal informações sobre essa condição.
+
 def Aut_Liga():
 
 	#gpio.digital_write(LED, GPIO.HIGH)
@@ -150,9 +141,7 @@ def Aut_Liga():
 
 
 
-#No automático, desliga o relé(ar condicionado), tranforma variável alarme (que informa a nuvem se o
-# sistema está ligado ou não) em 0, atualiza o valor de todas as variáveis na nuvem de acordo com essa
-#condição e print na tela do terminal informações sobre essa condição.
+
 def Aut_Des():
 
 	#gpio.digital_write(LED, GPIO.LOW)
@@ -173,9 +162,7 @@ def Aut_Des():
 
 
 
-#No estado manual, liga o relé(ar condicionado), tranforma variável alarme (que informa a nuvem se o
-# sistema está ligado ou não) em 1, atualiza o valor de todas as variáveis na nuvem de acordo com essa
-#condição e print na tela do terminal informações sobre essa condição.
+
 def Man_Liga():
 
 	#gpio.digital_write(LED, GPIO.HIGH)
@@ -194,9 +181,7 @@ def Man_Liga():
 
 
 
-#No estado manual, desliga o relé(ar condicionado), tranforma variável alarme (que informa a nuvem se o
-# sistema está ligado ou não) em 0, atualiza o valor de todas as variáveis na nuvem de acordo com essa
-#condição e print na tela do terminal informações sobre essa condição.
+
 def Man_Des():
 
 	#gpio.digital_write(LED, GPIO.LOW)
@@ -214,7 +199,7 @@ def Man_Des():
 
 
 
-#Aqui é executado o programa principal até que seja interrompido
+
 with GPIO(pins) as gpio:
 	while True:		
 		#Faz a leitura e atualização das variáveis
@@ -222,28 +207,25 @@ with GPIO(pins) as gpio:
 		botao_valor = gpio.digital_read(BOTAO)
 		vtemp = readtemp(gpio)
 		vlumi = readLumi(gpio)		
-		#Verifica se o botão local ou botão na nuvem(aplicativo) foi acionado
+		
 		if botao_valor == 0 or bam_nuvem == 0:			
-			#Se nenhum acionado o sistema está em automático e caso temperatura maior que 24, liga
-			#o ar condicionadi e uma variável na nuvem estado_am receberá 1, informado ao app que
-			#está em automático
+			
 			estado_am = 1
 			if vtemp > 23:
 				Aut_Liga()			
-			#caso temperatura medida for menor que 24, desliga ar condicionado		
+			
 			else:
 				Aut_Des()		
-		#Caso um dos botões seja acionado, o sistema vai para manual e a variável estado_am recebe 0
-		# E informa estar em manual para nuvem (app)		
+			
 		else:
 	 		estado_am = 0
 			print "Sistema Manual \n"			
-			#Verifica se o botão de ligar da nuvem(App) está na condição de liga ou desliga
+			
 			if ld_nuvem == 1:
 				Man_Liga()
 			else:
 				Man_Des()
-		#Atualiza o sistema de 10 em 10 segundos		
+			
 		time.sleep(10)
 		
 		
