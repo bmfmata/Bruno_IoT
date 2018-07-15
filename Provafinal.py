@@ -208,7 +208,7 @@ with GPIO(pins) as gpio:
 		vtemp = readtemp(gpio)
 		vlumi = readLumi(gpio)		
 		
-		if botao_valor == 0 or bam_nuvem == 0:			
+		if botao_valor == 0 and bam_nuvem == 0:			
 			
 			estado_am = 1
 			if vtemp > 23:
